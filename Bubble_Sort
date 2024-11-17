@@ -1,0 +1,52 @@
+package dsa;
+import java.util.*;
+
+public class Sort_lvl1 {
+	//	BUBBLE SORT
+	
+	static void bubble_sort(int arr[], int n) {
+		
+		for(int i=n-1; i>=1;i--) {
+			
+			for(int j=0;j<=i-1;j++) {// run time error
+				
+				if(arr[j]>arr[j+1]) {
+					
+					int temp = arr[j];
+					arr[j] = arr[j+1];
+					arr[j+1] = temp;
+				}
+			}
+			
+		}
+		System.out.println("After Bubble sort");
+		for(int i=0;i<n;i++) {
+			System.out.print(arr[i]+" ");
+		}
+		System.out.println();
+	}
+
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter no of element in array: ");
+		int n = sc.nextInt();
+		int arr[]  = new int[n];
+		
+		for(int i=0;i<n;i++) {
+			System.out.println("Enter"+" "+i+"th element : ");
+			arr[i] = sc.nextInt();
+		}
+		
+		System.out.println("Before Sorting ");
+		for(int i=0;i<n;i++) {
+			System.out.print(arr[i]+" ");
+		}
+		System.out.println();
+		bubble_sort(arr,n);
+
+	}
+
+}
