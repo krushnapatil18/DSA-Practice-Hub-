@@ -1,0 +1,43 @@
+package dsa;
+import java.util.*;
+
+public class Second_largestInArray {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method 
+		Scanner sc = new Scanner(System.in);
+		int [] arr = {1,1,1,1,1,2,1,1};
+		int max = Integer.MIN_VALUE;
+		int lmax = Integer.MIN_VALUE;
+		
+		
+		for(int i=0;i<arr.length;i++) {
+			if(arr[i]>max) {
+				lmax = max;
+				max = arr[i];
+			}
+			else if(arr[i]>lmax && arr[i] != max) {
+				lmax = arr[i];
+			}
+			
+		}
+		
+		int min = Integer.MAX_VALUE;
+		int lmin = Integer.MAX_VALUE;
+		for(int i=0;i<arr.length;i++) {
+			if(arr[i]<min) {
+				lmin = min;
+				min = arr[i];
+			}
+			else if(arr[i]<lmin && arr[i] != min) {
+				lmin = arr[i];
+			}
+		}
+		
+		System.out.println("Max element is : "+max);	
+		System.out.println("Second Max element is : "+lmax);
+		System.out.println("Min element is : "+min);
+		System.out.println("Second Min element is : "+lmin);
+		
+	}
+}
