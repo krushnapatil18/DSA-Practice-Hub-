@@ -1,0 +1,18 @@
+package dsa;
+
+public class NumAppear_Once_Twice {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+// In XOR operation : 2^2 =0, 2^2^2 = 2
+		int a[] = {1,1,2,3,3,4,4};
+		int xor = 0;
+		for(int i=0;i<a.length;i++) {
+			xor = xor ^ a[i];
+		}
+		System.out.println("Number That Appear Once: "+xor);
+		
+	}
+
+}
