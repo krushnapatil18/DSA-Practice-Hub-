@@ -1,0 +1,79 @@
+package dsa;
+
+public class SortArrayOf_0s_1s_2s {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int arr[] = {0,1,2,2,1,0,0,1,2,1,2,0,0,0,1,1,2,1,0,1,2,0,0,0};
+		int n = arr.length;
+		System.out.println("Before Swap");
+		for(int i=0;i<n;i++) {
+			System.out.print(arr[i]);
+		}
+		dnfa(arr,n); // THIS IS DUTCH NATINAL FLAG ALGORITHM
+		
+		notOptimal(arr,n); // THIS IS COUNTING METHOD
+	}
+
+
+	public static void dnfa(int[] arr, int n) {
+		// TODO Auto-generated method stub
+		int low = 0;
+		int mid = 0;
+		int high = n-1;
+		
+		while(mid<=high) {
+			if(arr[mid]==0) {
+				int temp = arr[low];
+				arr[low] = arr[mid];
+				arr[mid] = temp;
+				low++;
+				mid++;
+			}
+			else if(arr[mid]==1) {
+				mid++;
+			}
+			else {
+				int temp = arr[mid];
+				arr[mid] = arr[high];
+				arr[high] = temp;
+				high--;
+			}
+		}
+		System.out.println();
+		System.out.println();
+		System.out.println("AFTER DNFA SWAP");
+		for(int i=0;i<n;i++) {
+			System.out.print(arr[i]);
+		}
+	}
+	
+
+	public static void notOptimal(int[] arr, int n) {
+		// TODO Auto-generated method stub
+		int c1 = 0;
+		int c2 = 0;
+		int c3 = 0;
+		
+		for(int i=0;i<n;i++) {
+			if(arr[i]==0) c1++;
+			else if(arr[i]==1) c2++;
+			else c3++;
+		}
+		
+		for(int i=0;i<c1;i++) arr[i]=0;
+		
+		for(int i=c1;i<c1+c2;i++) arr[i]=1;
+		
+		for(int i=c1+c2;i<n;i++) arr[i] = 2;
+		
+		System.out.println();
+		System.out.println();
+		System.out.println("AFTER COUNTING METHOD SWAP");
+		for(int i=0;i<n;i++) {
+			System.out.print(arr[i]);
+		}
+		
+	}
+
+}
