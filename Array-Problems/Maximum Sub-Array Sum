@@ -21,6 +21,7 @@ public class Max_Subarray_sum {
         		sum=0;
         	}
         }
+	if(maxi<0) maxi=0;// if subarray is empty
         System.out.println("The Sum Of maximum subarray is:"+maxi);
 
 	}
