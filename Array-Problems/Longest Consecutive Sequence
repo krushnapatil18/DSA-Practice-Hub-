@@ -1,0 +1,40 @@
+package dsa;
+import java.util.*;
+
+import java.util.Arrays;
+
+public class LongestConsecutiveSeq {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int arr[] = {100,200,1,2,3,4,101,102,102,103,104,105};
+		lsub(arr);
+
+	}
+
+	public static void lsub(int[] arr) {
+		// TODO Auto-generated method stub
+		int n = arr.length;
+		if(n==0) System.out.println("Enter Array");
+		
+		Arrays.sort(arr);
+		int lastsmaller = Integer.MIN_VALUE;
+		int count = 0;
+		int longest = 1;
+		
+		for(int i=0;i<n;i++) {
+			if(arr[i]-1 == lastsmaller) {
+				count++;
+				lastsmaller = arr[i];
+			}
+			else if(arr[i]!=lastsmaller) {
+				count = 1;
+				lastsmaller = arr[i];
+			}
+			
+			longest = Math.max(longest, count);
+		}
+		System.out.println("The Longest Subarray :"+longest);
+	}
+
+}
