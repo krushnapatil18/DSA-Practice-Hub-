@@ -1,0 +1,28 @@
+package dsa;
+
+public class PascalRow {
+
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        int R = 6;
+
+        System.out.println("The Entire Row " + R + "th is: ");
+        printEntireRow(R);
+    }
+
+    private static long nCr(int n, int m) {
+        long res = 1;
+        for (int i = 0; i < m; i++) {
+            res = res * (n - i);
+            res = res / (i + 1);
+        }
+        return res;
+    }
+
+    private static void printEntireRow(int row) {
+        for (int c = 1; c <= row; c++) {
+            System.out.print(nCr(row - 1, c - 1) + " ");
+        }
+        System.out.println();
+    }
+}
