@@ -1,0 +1,35 @@
+package dsa;
+import java.util.*;
+public class MaxProduct_Subarray {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int arr[] = {2,3,-2,4,0,4,4,-5,-1,5,1};
+		int n = arr.length;
+		int maxi = Integer.MIN_VALUE;
+//		for(int i=0;i<n;i++) {
+//			int product = 1;
+//			for(int j=i;j<n;j++) {
+//				maxi = Math.max(maxi, product);
+//				product = product*arr[j];
+//			}
+//		}
+//		System.out.println(maxi);
+		
+		
+		//OPTimal
+		int pre = 1;
+		int suff = 1;
+		for(int i=0;i<n;i++) {
+			if(pre==0) pre=1;
+			if(suff==1) suff=1;
+			
+			pre = pre*arr[i];
+			suff = suff*arr[n-1-i];
+			maxi = Math.max(maxi, Math.max(pre, suff));
+		}
+		
+		System.out.print("The maximum product subarray is: "+maxi);
+	}
+
+}
