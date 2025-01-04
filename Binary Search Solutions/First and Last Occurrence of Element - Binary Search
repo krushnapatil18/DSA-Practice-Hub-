@@ -1,0 +1,60 @@
+package dsa.Binary_Search;
+
+public class First_last_occurence {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int arr[] = {1, 2, 4, 5, 6, 8, 8, 8, 8, 9, 10, 13, 16, 20};
+		int n = arr.length;
+		int target = 8;
+		int lb1 = lb(arr,n,target);
+		if(lb1 == n || arr[lb1] != target) {
+			System.out.println("No ele found!");
+		}
+		else {
+			System.out.println(lb1);
+			System.out.println(ub(arr,n,target)-1);
+		}
+		
+
+	}
+	private static int lb(int[] arr, int n, int target) {
+		// TODO Auto-generated method stub
+		int ans = n;
+		int low = 0;
+		int high = n-1;
+		
+		while(low<=high) {
+			int mid = (low+high)/2;
+			
+			if(arr[mid]>=target) {
+				ans = mid;
+				high = mid-1;
+			}
+			else {
+				low = mid+1;
+			}
+		}
+		return ans;
+		
+	}
+	private static int ub(int[] arr, int n, int target) {
+		// TODO Auto-generated method stub
+		int ans = n;
+		int low = 0;
+		int high = n - 1;
+
+		while (low <= high) {
+			int mid = (low + high) / 2;
+
+			if (arr[mid] > target) {
+				ans = mid;
+				high = mid - 1;
+			} else {
+				low = mid + 1;
+			}
+		}
+		return ans;
+	}
+
+}
