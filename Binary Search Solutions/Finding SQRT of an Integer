@@ -1,0 +1,30 @@
+package dsa.Binary_Search;
+
+public class MaxInt_whichOnMultiplying_lessthanN {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int n = 28;
+		int k = sqrt(n);
+		System.out.println(k);
+	}
+
+	private static int sqrt(int n) {
+		// TODO Auto-generated method stub
+		int low = 1;
+		int high = n;
+		int ans = 1;
+		while(low<=high) {
+			
+			int mid = (low+high)/2;
+			
+			if((mid * mid)<=n) {
+				low = mid+1;
+			}
+			else high = mid-1;
+		}
+		return high;
+		
+	}
+
+}
