@@ -1,0 +1,69 @@
+package dsa.Binary_Search;
+import java.util.*;
+
+public class MinDays_Bouquets {
+
+    public static void main(String[] args) {
+        int arr[] = {7, 7, 7, 13, 11, 12, 7};
+        int k = 3; // flowers per bouquet
+        int m = 2; // number of bouquets required
+
+        int ans = findMinDays(arr, k, m);
+        if (ans == -1)
+            System.out.println("Can't Make it!");
+        else
+            System.out.println("Done! " + ans);
+    }
+
+    private static int findMinDays(int[] arr, int k, int m) {
+        long val = (long) m * k; // Total flowers required
+        int n = arr.length;
+
+        // Check if it’s possible to make bouquets
+        if (val > n) return -1;
+
+        // Find the minimum and maximum days
+        int mini = Integer.MAX_VALUE, maxi = Integer.MIN_VALUE;
+        for (int i = 0; i < n; i++) {
+            mini = Math.min(mini, arr[i]);
+            maxi = Math.max(maxi, arr[i]);
+        }
+
+        // Binary search for the minimum day
+        int low = mini, high = maxi;
+        int res = -1;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (possible(arr, mid, k, m)) {
+                res = mid;
+                high = mid - 1; // Search for earlier day
+            } else {
+                low = mid + 1; // Search for later day
+            }
+        }
+
+        return res;
+    }
+
+    private static boolean possible(int[] arr, int day, int k, int m) {
+        int count = 0; // Count of consecutive flowers
+        int noOfB = 0; // Number of bouquets
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] <= day) {
+                count++;
+                if (count == k) { // A bouquet is formed
+                    noOfB++;
+                    count = 0; // Reset count for next bouquet
+                }
+            } else {
+                count = 0; // Reset count if flower cannot bloom
+            }
+
+            if (noOfB >= m) return true; // Early exit if condition is met
+        }
+
+        return noOfB >= m;
+    }
+}
