@@ -1,12 +1,12 @@
-package dsa.LinkedList;
+package dsa.doublyLL;
 
 public class Node2 {
 
 	public int data;
-	public Node next;
-	public Node back;
+	public Node2 next;
+	public Node2 back;
 	
-	public Node2(int data1, Node next1, Node back1) {
+	public Node2(int data1, Node2 next1, Node2 back1) {
 		this.data = data1;
 		this.next = next1;
 		this.back = back1;
