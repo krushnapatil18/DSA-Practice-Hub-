@@ -1,0 +1,57 @@
+package StackAndQ;
+import java.util.*;
+
+class QusingS{
+	
+	Stack<Integer> s1 = new Stack();
+	Stack<Integer> s2 = new Stack();
+	
+	void push(int x) {
+		
+		while(!s1.isEmpty()) { //step1
+			s2.push(s1.pop());
+		}
+		
+		s1.push(x); //step2
+		
+		while(!s2.isEmpty()) {
+			s1.push(s2.pop());
+		}
+	}
+	
+	int pop() {
+		 if (s1.isEmpty()) {
+	            System.out.println("Queue is empty!");
+	            return -1;
+	        }
+	     return s1.pop();
+	}
+	int top() {
+        if (s1.isEmpty()) {
+            System.out.println("Queue is empty!");
+            return -1;
+        }
+        return s1.peek();
+	}
+}
+
+
+public class QusingStack {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		QusingS q = new QusingS();
+		
+		
+        q.push(10);
+        q.push(20);
+        q.push(30);
+
+        System.out.println(q.top());    // Output: 10
+        System.out.println(q.pop());  // Output: 10
+        System.out.println(q.top());    // Output: 20
+
+
+	}
+
+}
