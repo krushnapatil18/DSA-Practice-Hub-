@@ -1,0 +1,67 @@
+package StackAndQ;
+import java.util.*;
+
+class Stimple{
+	
+	int top = -1;
+	int[] stack;
+	int size;
+	
+	int size() {
+		return top+1;
+	}
+	
+	void push(int x) {
+		if(top == size-1) {
+			System.out.println("Stack is overFlow");
+			return;
+		}
+		top = top +1;
+		stack[top] = x;
+	}
+	
+	int top() {
+		if(top == -1) {
+			System.out.println("Stack is empty!");
+			return -1;
+		}
+		return stack[top];
+	}
+	
+	int pop() {
+		
+		if(top==-1) {
+			System.out.println("Stack is underFlow!");
+			return -1;
+			
+		}
+		return top = top-1;
+	}
+}
+
+public class StackUsingArray{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		Stimple s = new Stimple();
+		
+		System.out.println("Enter Size!");
+		s.size=sc.nextInt() ;
+		s.stack = new int[s.size];
+		s.push(10);
+		s.push(20);
+		s.push(30);
+		s.push(40);
+		s.push(300);
+		s.push(370);
+		
+
+
+		System.out.println("Top element: " + s.top());
+		System.out.println("Stack size: " + s.size());
+
+		s.pop();
+		System.out.println("After popping, top: " + s.top());
+
+		sc.close();
+	}
+}
