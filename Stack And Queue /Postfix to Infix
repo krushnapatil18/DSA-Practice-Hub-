@@ -1,0 +1,31 @@
+package StackAndQ;
+import java.util.Stack;
+
+public class PostfixToInfix {
+
+    static String toInfix(String postfix) {
+        Stack<String> stack = new Stack<>();
+
+        for (int i = 0; i < postfix.length(); i++) {
+            char ch = postfix.charAt(i);
+
+            // Operand
+            if (Character.isLetterOrDigit(ch)) {
+                stack.push(Character.toString(ch));
+            } 
+            // Operator
+            else {
+                String b = stack.pop();
+                String a = stack.pop();
+                stack.push("(" + a + ch + b + ")");
+            }
+        }
+
+        return stack.pop();
+    }
+
+    public static void main(String[] args) {
+        String postfix = "ab+c*";
+        System.out.println("Infix: " + toInfix(postfix));  // ((a+b)*c)
+    }
+}
